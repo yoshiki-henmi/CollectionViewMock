@@ -1,6 +1,9 @@
 // How to create UICollectionViewCell programmatically
 // https://stackoverflow.com/questions/39438803/how-to-create-uicollectionviewcell-programmatically
 
+// 【Swift】 UICollectionViewFlowLayoutの余白調整について
+// https://uruly.xyz/%E3%80%90swift%E3%80%91-uicollectionviewflowlayout%E3%81%AE%E4%BD%99%E7%99%BD%E8%AA%BF%E6%95%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/
+
 import UIKit
 
 
@@ -16,9 +19,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Create an instance of UICollectionViewFlowLayout since you cant
         // Initialize UICollectionView without a layout
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: view.frame.width, height: 700)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        layout.itemSize = CGSize(width: view.frame.width, height: 200)
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 40 //行間余白
+        layout.minimumInteritemSpacing = view.frame.height //列間の余白
         
         collectionview = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionview.dataSource = self
